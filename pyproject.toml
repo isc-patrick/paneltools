@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paneltools"
+authors = [
+    {name = "Patrick Sulin", email = "psulin@intersystems.com"},
+]
+description = "My package description"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-3-Clause"}
+classifiers = [
+]
+dependencies = [
+    "panel==1.4.0"
+]
+
+dynamic = ["version"]
