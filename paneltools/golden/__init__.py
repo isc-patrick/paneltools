@@ -26,7 +26,7 @@ class IRISGoldenTemplate(BasicTemplate):
     GoldenTemplate is built on top of golden-layout library.
     """
 
-    sidebar_width = param.Integer(default=20, constant=True, doc="""
+    sidebar_width = param.Integer(default=20, constant=False, doc="""
         The width of the sidebar in percent.""")
 
     # _css = './golden.css'
