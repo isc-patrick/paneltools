@@ -19,8 +19,6 @@ if TYPE_CHECKING:
     from panel.io.resources import ResourcesType
     #from ...io.resources import ResourcesType
 
-class Dummy():
-    pass
 class IRISGoldenTemplate(BasicTemplate):
     """
     GoldenTemplate is built on top of golden-layout library.
@@ -34,17 +32,23 @@ class IRISGoldenTemplate(BasicTemplate):
 
     _css = pathlib.Path(__file__).parent / 'golden.css'
     _template = pathlib.Path(__file__).parent / 'golden.html'
-    logo = pathlib.Path(__file__).parent / '../static/intersystems-logo.svg'
 
+    # TODO - change this to use root based dir
+    logo = pathlib.Path(__file__).parent / '../static/intersystems-logo.svg'
+    print(f"Config CDN {config.npm_cdn}")
     _resources = {
         'css': {
             'goldenlayout': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-base.css",
             'golden-theme-dark': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-dark-theme.css",
-            'golden-theme-light': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-light-theme.css"
+            'golden-theme-light': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-light-theme.css",
+     #       'bootstrap': f"{config.npm_cdn}/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         },
         'js': {
             'jquery': JS_URLS['jQuery'],
-            'goldenlayout': f"{config.npm_cdn}/golden-layout@1.5.9/dist/goldenlayout.min.js"
+            'goldenlayout': f"{config.npm_cdn}/golden-layout@1.5.9/dist/goldenlayout.min.js",
+          
+          #  'bootstrap': f"{config.npm_cdn}/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
+         #   'popper': f"{config.npm_cdn}/@floating-ui/core@1.6.8"
         }
     }
 

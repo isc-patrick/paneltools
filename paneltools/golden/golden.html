@@ -42,6 +42,27 @@
     background-color: var(--header-background);
     color: var(--header-color);
   }
+
+  .sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    width: 100px;
+    top: 0; /* Stay at the top */
+    left: 0;
+    /*background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    display: block;
+  }
+
+  .box {
+      width: 75px;
+      height: 100%;
+      background-color: #F4F5F7;
+      /* border-width:1px;
+      border-color: #075ddd; */
+        }
 </style>
 
 {% endblock %}
@@ -65,15 +86,32 @@
       {% endfor %}
       {% endfor %}
     </section>
+    <form>  
+      <select id = "main-menu" onchange = "handleMenu()" >  
+      <option>     </option>  
+      <option>ResetState</option>  
+      <option>ToggleTabs</option>  
+      </select>  
+      </form>  
+
     {% if busy %}
     <div class="pn-busy-container">
       {{ embed(roots.busy_indicator) | indent(6) }}
     </div>
     {% endif %}
+ 
   </div>
 </header>
 
+
+<!--
+This creates a fixed side bar. 
+<div class="box">
+</div> -->
+ 
+
 <div class="main-area header-adjust" id="main">
+
   <main class="main-content" id="main-content"></main>
   <div id="pn-Modal" class="pn-modal header-adjust">
     <div class="pn-modal-content">
@@ -95,8 +133,29 @@
 
 <script type="text/javascript">
   
-  var default_layout = {"settings":{"hasHeaders":true,"constrainDragToContainer":true,"reorderEnabled":true,"selectionEnabled":false,"popoutWholeStack":false,"blockedPopoutsThrowError":true,"closePopoutsOnUnload":true,"showPopoutIcon":false,"showMaximiseIcon":true,"showCloseIcon":true,"responsiveMode":"onload","tabOverlapAllowance":0,"reorderOnTabMenuClick":true,"tabControlOffset":10},"dimensions":{"borderWidth":5,"borderGrabWidth":15,"minItemHeight":10,"minItemWidth":10,"headerHeight":20,"dragProxyWidth":300,"dragProxyHeight":200},"labels":{"close":"close","maximise":"maximise","minimise":"minimise","popout":"open in new window","popin":"pop in","tabDropdown":"additional tabs"},"content":[{"type":"column","isClosable":true,"reorderEnabled":true,"title":"","content":[{"type":"row","isClosable":true,"reorderEnabled":true,"title":"","height":84.50363196125909,"content":[{"type":"stack","width":68.52713178294574,"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"08c13e6b-c380-4436-8f2e-0953127de471\" data-root-id=\"p2815\" style=\"display: contents;\"></div>","title":"Chat"},"isClosable":true,"reorderEnabled":true,"title":"Chat"}]},{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"width":31.472868217054263,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"eba2475b-bb34-4290-9f56-119038d780b8\" data-root-id=\"p2868\" style=\"display: contents;\"></div>","title":"SQL"},"isClosable":true,"reorderEnabled":true,"title":"SQL"},{"type":"component","componentName":"view","componentState":{"model":"<div id=\"691d4d0b-68f3-41f4-a7a7-d1679b2fe7ed\" data-root-id=\"p2801\" style=\"display: contents;\"></div>","title":"Instructions"},"isClosable":true,"reorderEnabled":true,"title":"Instructions"},{"type":"component","componentName":"view","componentState":{"model":"<div id=\"7dcedc40-0323-4e7b-8655-ae7ddddf0cfb\" data-root-id=\"p2890\" style=\"display: contents;\"></div>","title":"Content"},"isClosable":true,"reorderEnabled":true,"title":"Content"}]}]},{"type":"row","isClosable":true,"reorderEnabled":true,"title":"","height":15.496368038740915,"content":[{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"height":25.52486187845304,"width":80.78668683812406,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"b2812d54-3db6-48e9-b9c9-de51e5ab010e\" data-root-id=\"p2878\" style=\"display: contents;\"></div>","title":"Logs"},"isClosable":true,"reorderEnabled":true,"title":"Logs"}]},{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"width":19.213313161875945,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"ed98baef-3004-4c60-9a75-f5e3c6f53ca2\" data-root-id=\"p2787\" style=\"display: contents;\"></div>","title":"Config"},"isClosable":true,"reorderEnabled":true,"title":"Config"}]}]}]}],"isClosable":true,"reorderEnabled":true,"title":"","openPopouts":[],"maximisedItemId":null}
- 
+  var default_layout = {"settings":{"hasHeaders":false,"constrainDragToContainer":true,"reorderEnabled":true,"selectionEnabled":false,"popoutWholeStack":false,"blockedPopoutsThrowError":true,"closePopoutsOnUnload":true,"showPopoutIcon":false,"showMaximiseIcon":true,"showCloseIcon":true,"responsiveMode":"onload","tabOverlapAllowance":0,"reorderOnTabMenuClick":true,"tabControlOffset":10},"dimensions":{"borderWidth":5,"borderGrabWidth":15,"minItemHeight":10,"minItemWidth":10,"headerHeight":20,"dragProxyWidth":300,"dragProxyHeight":200},"labels":{"close":"close","maximise":"maximise","minimise":"minimise","popout":"open in new window","popin":"pop in","tabDropdown":"additional tabs"},"content":[{"type":"column","isClosable":true,"reorderEnabled":true,"title":"","content":[{"type":"row","isClosable":true,"reorderEnabled":true,"title":"","height":84.50363196125909,"content":[{"type":"stack","width":68.52713178294574,"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"08c13e6b-c380-4436-8f2e-0953127de471\" data-root-id=\"p2815\" style=\"display: contents;\"></div>","title":"Chat"},"isClosable":true,"reorderEnabled":true,"title":"Chat"}]},{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"width":31.472868217054263,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"eba2475b-bb34-4290-9f56-119038d780b8\" data-root-id=\"p2868\" style=\"display: contents;\"></div>","title":"SQL"},"isClosable":true,"reorderEnabled":true,"title":"SQL"},{"type":"component","componentName":"view","componentState":{"model":"<div id=\"691d4d0b-68f3-41f4-a7a7-d1679b2fe7ed\" data-root-id=\"p2801\" style=\"display: contents;\"></div>","title":"Instructions"},"isClosable":true,"reorderEnabled":true,"title":"Instructions"},{"type":"component","componentName":"view","componentState":{"model":"<div id=\"7dcedc40-0323-4e7b-8655-ae7ddddf0cfb\" data-root-id=\"p2890\" style=\"display: contents;\"></div>","title":"Content"},"isClosable":true,"reorderEnabled":true,"title":"Content"}]}]},{"type":"row","isClosable":true,"reorderEnabled":true,"title":"","height":15.496368038740915,"content":[{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"height":25.52486187845304,"width":80.78668683812406,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"b2812d54-3db6-48e9-b9c9-de51e5ab010e\" data-root-id=\"p2878\" style=\"display: contents;\"></div>","title":"Logs"},"isClosable":true,"reorderEnabled":true,"title":"Logs"}]},{"type":"stack","header":{},"isClosable":true,"reorderEnabled":true,"title":"","activeItemIndex":0,"width":19.213313161875945,"content":[{"type":"component","componentName":"view","componentState":{"model":"<div id=\"ed98baef-3004-4c60-9a75-f5e3c6f53ca2\" data-root-id=\"p2787\" style=\"display: contents;\"></div>","title":"Config"},"isClosable":true,"reorderEnabled":true,"title":"Config"}]}]}]}],"isClosable":true,"reorderEnabled":true,"title":"","openPopouts":[],"maximisedItemId":null}
+  
+  function ToggleTabs() {
+    myLayout.config.settings.hasHeaders = myLayout.config.settings.hasHeaders ? false : true; 
+    saveState();
+    location.reload();
+    console.log(myLayout.config.settings.hasHeaders)
+  }
+
+  function ResetState() {
+        localStorage.removeItem('savedState');
+        console.log("deleted savedState")
+        location.reload();
+  }
+
+  function handleMenu() {
+    var mylist = document.getElementById("main-menu");  
+    var selected = mylist.options[mylist.selectedIndex].text;  
+    if (selected != "") {
+      window[selected]();
+    }
+    }  
+
   function replaceMatchingComponentStates(obj1, obj2) {
     // Create a map of titles to componentStates in obj1 for quick lookup
     const componentStateMap = new Map();
@@ -116,9 +175,13 @@
             obj.componentState = componentStateMap.get(obj.componentState.title);
         }
     })(obj2);
+
+    
 }
   
-  
+// const element = document.getElementById("root"); 
+// element.style.sidebar_width = " {{sidebar_width}} "; 
+ 
   var config = {
     content: [
       {
@@ -166,6 +229,7 @@
 
 
   savedState = localStorage.getItem( 'savedState' );
+  console.log(" sidebar width - {{sidebar_width}} ")
   var myLayout, saved_config;
   if( savedState !== null ) {
      saved_config = JSON.parse(savedState);
@@ -177,7 +241,7 @@
   }
 
   var myLayout = new GoldenLayout(saved_config, $('#main-content'));
-  myLayout.config.settings.hasHeaders=true
+  //myLayout.config.settings.hasHeaders=true;
   
   var resizing = false;
   var resize_dispatcher = () => {
@@ -198,6 +262,11 @@
     container.getElement().html(componentState.model);
     container.on("resize", resize_dispatcher)
   })
+
+  function saveState() {
+    var state = JSON.stringify( myLayout.toConfig() );
+    localStorage.setItem( 'savedState', state );
+  }
 
   myLayout.on('stateChanged', function(){
     var state = JSON.stringify( myLayout.toConfig() );

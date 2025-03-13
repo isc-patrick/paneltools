@@ -1,1 +1,2 @@
-panel==1.4.0
+panel==1.5.0
+watchfiles

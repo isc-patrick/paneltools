@@ -9,6 +9,6 @@ setup(name='paneltools',
       package_dir={"paneltools": "paneltools"},
       entry_points={
       }, 
-      install_requires=[
+      install_requires=['panel==1.5.0'
     ]
      )
