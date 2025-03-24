@@ -6,10 +6,9 @@ pn.extension()
 
 template = IRISGoldenTemplate(
         title="Basic Usage",
-        sidebar = [],
-        header=[],
-        header_background = '#FFFFFF',
-        logo='/assets/intersystems-logo.svg')
+        # sidebar = [],
+        # header=[],
+        header_background = '#FFFFFF')
 
 main_content = pn.pane.HTML('<BR><B>I am the first content pane</B>', )
 main_content2 = pn.pane.HTML('<BR><B>Second content pane, here</B>')

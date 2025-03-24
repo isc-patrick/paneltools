@@ -13,8 +13,6 @@ from panel import config
 from panel.io.resources import JS_URLS
 from panel.template.base import BasicTemplate
 
-print("Trying......")
-
 if TYPE_CHECKING:
     from panel.io.resources import ResourcesType
     #from ...io.resources import ResourcesType
@@ -35,38 +33,19 @@ class IRISGoldenTemplate(BasicTemplate):
 
     # TODO - change this to use root based dir
     logo = pathlib.Path(__file__).parent / '../static/intersystems-logo.svg'
-    print(f"Config CDN {config.npm_cdn}")
+    #logo = '../static/intersystems-logo.svg'
+    
     _resources = {
         'css': {
             'goldenlayout': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-base.css",
             'golden-theme-dark': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-dark-theme.css",
             'golden-theme-light': f"{config.npm_cdn}/golden-layout@1.5.9/src/css/goldenlayout-light-theme.css",
-     #       'bootstrap': f"{config.npm_cdn}/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         },
         'js': {
             'jquery': JS_URLS['jQuery'],
             'goldenlayout': f"{config.npm_cdn}/golden-layout@1.5.9/dist/goldenlayout.min.js",
-          
-          #  'bootstrap': f"{config.npm_cdn}/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
-         #   'popper': f"{config.npm_cdn}/@floating-ui/core@1.6.8"
         }
     }
-
-    # def _update_render_items(self, event):
-    #     self.user = pn.state.user
-    #     pn.state.location.sync(self, {'user': 'str'})
-         
-    # def _update_render_items(self, event):
-    #     super()._update_render_items(event)
-    #     if event.obj is not self.main:
-    #         return
-    #     # print(self.main.objects, type(self.main.objects))
-    #     # for i in self.main.objects:
-    #     #      print(f"Width={i.width}  Height={i.height}")
-    #     #      print(f"MAIN objects items {i.__dir__()}")
-
-    #     layouts = f"Here I am {event.obj.name}"
-    #     self._render_variables['layouts'] = layouts
 
     def _apply_root(self, name, model, tags):
         if 'main' in tags:
