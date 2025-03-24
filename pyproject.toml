@@ -16,5 +16,5 @@ classifiers = [
 dependencies = [
     "panel>=1.5.0"
 ]
-
+ 
 dynamic = ["version"]
